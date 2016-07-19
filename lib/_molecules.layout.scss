@@ -1,0 +1,26 @@
+@charset "UTF-8";
+/*! blocss-layout v0.0.0 | MIT License | github.com/Blocss */
+
+/*----------------------------------------------------------------------------*\
+    $LAYOUT
+    Fluid and nestable layout system based on flexbox
+\*----------------------------------------------------------------------------*/
+
+/**
+ * Namespacing
+ */
+$blocss-layout-namespace: $blocss-namespace !default;
+
+/**
+ * Module can be disabled by switching `$blocss-use-layout` to `false`
+ */
+$blocss-use-layout: true !default;
+
+
+
+/*  Layout Core
+\*----------------------------------------------------------------------------*/
+
+@if $blocss-use-layout == true {
+
+} // use-layout
