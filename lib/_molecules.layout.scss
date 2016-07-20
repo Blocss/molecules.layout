@@ -37,7 +37,7 @@ $blocss-layout-gutter: $blocss-space !default;
  * 1. Account for browser defaults of elements that might be the root node of
  *    the component.
  */
-.layout {
+.#{$blocss-layout-namespace}layout {
     display: flex; /* [1] */
     flex-flow: row wrap;
     padding: 0; /* [1] */
@@ -49,7 +49,7 @@ $blocss-layout-gutter: $blocss-space !default;
 /**
  * Modifier: center align all layout cells
  */
-.layout--align-center {
+.#{$blocss-layout-namespace}layout--align-center {
     justify-content: center;
 }
 
@@ -57,7 +57,7 @@ $blocss-layout-gutter: $blocss-space !default;
 /**
  * Modifier: right align all layout cells
  */
-.layout--align-right {
+.#{$blocss-layout-namespace}layout--align-right {
     justify-content: flex-end;
 }
 
@@ -65,7 +65,7 @@ $blocss-layout-gutter: $blocss-space !default;
 /**
  * Modifier: middle-align layout cells
  */
-.layout--align-middle {
+.#{$blocss-layout-namespace}layout--align-middle {
     align-items: center;
 }
 
@@ -73,7 +73,7 @@ $blocss-layout-gutter: $blocss-space !default;
 /**
  * Modifier: bottom-align layout cells
  */
-.layout--align-bottom {
+.#{$blocss-layout-namespace}layout--align-bottom {
     align-items: flex-end;
 }
 
@@ -87,8 +87,8 @@ $blocss-layout-gutter: $blocss-space !default;
  *    Use `0%` to avoid bug in IE10/11 with unitless flex basis
  *    http://git.io/vllWx
  */
-.layout--fit {
-    > .layout__cell {
+.#{$blocss-layout-namespace}layout--fit {
+    > .#{$blocss-layout-namespace}layout__cell {
         flex: 1 1 0%; /* [1] */
     }
 }
@@ -99,8 +99,8 @@ $blocss-layout-gutter: $blocss-space !default;
  * 1. The direct child of the flexbox must be a single element when you want
  *    to use equalheight
  */
-.layout--equalheight {
-    > .layout__cell {
+.#{$blocss-layout-namespace}layout--equalheight {
+    > .#{$blocss-layout-namespace}layout__cell {
         display: flex;
 
         > *:only-child {
@@ -113,10 +113,10 @@ $blocss-layout-gutter: $blocss-space !default;
 /**
  * Modifier: Gutter
  */
-.layout--gutter {
+.#{$blocss-layout-namespace}layout--gutter {
     @include rem(margin-left, -$blocss-layout-gutter);
 
-    > .layout__cell {
+    > .#{$blocss-layout-namespace}layout__cell {
         @include rem(padding-left, $blocss-layout-gutter);
     }
 }
@@ -134,7 +134,7 @@ $blocss-layout-gutter: $blocss-space !default;
  * 2. Fix issue where elements with overflow extend past the
  *    `layout__cell` container
  */
-.layout__cell {
+.#{$blocss-layout-namespace}layout__cell {
     flex-basis: 100%; /* [1] */
     min-width: 0; /* [2] */
 }
@@ -145,7 +145,7 @@ $blocss-layout-gutter: $blocss-space !default;
  * Set a specific unit to be horizontally centered. Doesn't affect
  * any other units. Can still contain a child `layout` object.
  */
-.layout__cell--center {
+.#{$blocss-layout-namespace}layout__cell--center {
     margin-left: auto;
     margin-right: auto;
 }
