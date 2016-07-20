@@ -21,6 +21,10 @@ $blocss-use-layout: true !default;
  * The default gutter
  */
 $blocss-layout-gutter: $blocss-space !default;
+$blocss-layout-gutter-tiny: $blocss-space-tiny !default;
+$blocss-layout-gutter-small: $blocss-space-small !default;
+$blocss-layout-gutter-large: $blocss-space-large !default;
+$blocss-layout-gutter-huge: $blocss-space-huge !default;
 
 /**
  * Define which namespaced breakpoints you would like to generate for `fit` & `fill`.
@@ -154,6 +158,52 @@ $blocss-dimensions-breakpoint-has-fill: () !default;
 
     > .#{$blocss-layout-namespace}layout__cell {
         @include rem(padding-left, $blocss-layout-gutter);
+    }
+}
+
+
+/**
+ * Modifier: Tiny gutter
+ */
+.#{$blocss-layout-namespace}layout--gutter-tiny {
+    @include rem(margin-left, -$blocss-layout-gutter-tiny);
+
+    > .#{$blocss-layout-namespace}layout__cell {
+        @include rem(padding-left, $blocss-layout-gutter-tiny);
+    }
+}
+
+
+/**
+ * Modifier: Small gutter
+ */
+.#{$blocss-layout-namespace}layout--gutter-small {
+    @include rem(margin-left, -$blocss-layout-gutter-small);
+
+    > .#{$blocss-layout-namespace}layout__cell {
+        @include rem(padding-left, $blocss-layout-gutter-small);
+    }
+}
+
+/**
+ * Modifier: Large gutter
+ */
+.#{$blocss-layout-namespace}layout--gutter-large {
+    @include rem(margin-left, -$blocss-layout-gutter-large);
+
+    > .#{$blocss-layout-namespace}layout__cell {
+        @include rem(padding-left, $blocss-layout-gutter-large);
+    }
+}
+
+/**
+ * Modifier: Huge gutter
+ */
+.#{$blocss-layout-namespace}layout--gutter-huge {
+    @include rem(margin-left, -$blocss-layout-gutter-huge);
+
+    > .#{$blocss-layout-namespace}layout__cell {
+        @include rem(padding-left, $blocss-layout-gutter-huge);
     }
 }
 
