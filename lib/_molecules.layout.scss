@@ -1,0 +1,228 @@
+@charset "UTF-8";
+/*! blocss-layout v0.1.0 | MIT License | github.com/Blocss */
+
+/*----------------------------------------------------------------------------*\
+    $LAYOUT
+    Fluid and nestable layout system based on flexbox
+\*----------------------------------------------------------------------------*/
+
+/**
+ * Namespacing
+ */
+$blocss-layout-namespace: $blocss-namespace !default;
+$blocss-dimensions-responsive-modifier: $blocss-responsive-modifier !default;
+
+/**
+ * Module can be disabled by switching `$blocss-use-layout` to `false`
+ */
+$blocss-use-layout: true !default;
+
+/**
+ * The default gutter
+ */
+$blocss-layout-gutter: $blocss-space !default;
+
+/**
+ * Define which namespaced breakpoints you would like to generate for `fit` & `fill`.
+ * This is handy if you only need `fit` on, say, desk, or you only need `fill`
+ * at mobile sizes. It allows you to only compile as much CSS as you need.
+ * All are empty by default, but you can add breakpoints at will.
+ *
+ * $blocss-dimensions-breakpoint-has-x:       ('palm', 'desk');
+ *
+ * Note: the name of the breakpoint must exist in the list of `$blocss-breakpoints`
+ *       in the Blocss base repository
+ */
+$blocss-dimensions-breakpoint-has-fit: () !default;
+$blocss-dimensions-breakpoint-has-fill: () !default;
+
+
+
+/*  Mixins
+\*----------------------------------------------------------------------------*/
+
+/**
+ * Modifier: Make a unit shrink wrap its content.
+ */
+@mixin blocss-layout-fit () {
+    flex-basis: auto;
+}
+
+
+/**
+ * Modifier: Make a cell fill the remaining space.
+ *
+ * 1. Be explicit to work around IE10 bug with shorthand flex
+ * 2. IE10 ignores previous `flex-basis` value. Setting again here fixes
+ */
+@mixin blocss-layout-fill () {
+    flex: 1 1 0%; /* [1] */
+    flex-basis: 0%; /* [2] */
+}
+
+
+
+@if $blocss-use-layout == true {
+
+/*  Layout root
+\*----------------------------------------------------------------------------*/
+
+/**
+ * All content must be contained within child `layout__cell` elements.
+ *
+ * 1. Account for browser defaults of elements that might be the root node of
+ *    the component.
+ */
+.#{$blocss-layout-namespace}layout {
+    display: flex; /* [1] */
+    flex-flow: row wrap;
+    padding: 0; /* [1] */
+    margin-left: 0; /* [1] */
+    list-style: none; /* [1] */
+}
+
+
+/**
+ * Modifier: center align all layout cells
+ */
+.#{$blocss-layout-namespace}layout--align-center {
+    justify-content: center;
+}
+
+
+/**
+ * Modifier: right align all layout cells
+ */
+.#{$blocss-layout-namespace}layout--align-right {
+    justify-content: flex-end;
+}
+
+
+/**
+ * Modifier: middle-align layout cells
+ */
+.#{$blocss-layout-namespace}layout--align-middle {
+    align-items: center;
+}
+
+
+/**
+ * Modifier: bottom-align layout cells
+ */
+.#{$blocss-layout-namespace}layout--align-bottom {
+    align-items: flex-end;
+}
+
+
+/**
+ * Modifier: allow cells to equal distribute width
+ *
+ * 1. Provide all values to avoid IE10 bug with shorthand flex
+ *    http://git.io/vllC7
+ *
+ *    Use `0%` to avoid bug in IE10/11 with unitless flex basis
+ *    http://git.io/vllWx
+ */
+.#{$blocss-layout-namespace}layout--fit {
+    > .#{$blocss-layout-namespace}layout__cell {
+        flex: 1 1 0%; /* [1] */
+    }
+}
+
+
+/**
+ * Modifier: all cells match height of tallest cell in a row
+ * 1. The direct child of the flexbox must be a single element when you want
+ *    to use equalheight
+ */
+.#{$blocss-layout-namespace}layout--equalheight {
+    > .#{$blocss-layout-namespace}layout__cell {
+        display: flex;
+
+        > * {
+            width: 100%; /* [1] */
+        }
+    }
+}
+
+
+/**
+ * Modifier: Gutter
+ */
+.#{$blocss-layout-namespace}layout--gutter {
+    @include rem(margin-left, -$blocss-layout-gutter);
+
+    > .#{$blocss-layout-namespace}layout__cell {
+        @include rem(padding-left, $blocss-layout-gutter);
+    }
+}
+
+
+
+/*  Layout cell
+\*----------------------------------------------------------------------------*/
+
+/**
+ * No explicit width by default. Rely on combining `layout__cell` with a dimension
+ * utility or a component class that extends 'layout'.
+ *
+ * 1. Set flex items to full width by default
+ * 2. Fix issue where elements with overflow extend past the
+ *    `layout__cell` container
+ */
+.#{$blocss-layout-namespace}layout__cell {
+    flex-basis: 100%; /* [1] */
+    min-width: 0; /* [2] */
+}
+
+
+/**
+ * Modifier: horizontally center one unit
+ * Set a specific unit to be horizontally centered. Doesn't affect
+ * any other units. Can still contain a child `layout` object.
+ */
+.#{$blocss-layout-namespace}layout__cell--center {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+/**
+ * Modifier: Make a cell shrink wrap its content.
+ */
+.#{$blocss-layout-namespace}layout__cell--fit {
+    @include blocss-layout-fit;
+}
+
+
+/**
+ * Modifier: Make a cell fill the remaining space.
+ */
+.#{$blocss-layout-namespace}layout__cell--fill {
+    @include blocss-layout-fill;
+}
+
+
+
+/*  Responsive
+\*----------------------------------------------------------------------------*/
+
+@each $name in $blocss-dimensions-breakpoint-has-fit {
+    @include media-query($name) {
+        .#{$blocss-layout-namespace}layout__cell--fit#{$blocss-dimensions-responsive-modifier}#{$name} {
+            @include blocss-layout-fit;
+        }
+    }
+}
+
+@each $name in $blocss-dimensions-breakpoint-has-fill {
+    @include media-query($name) {
+        .#{$blocss-layout-namespace}layout__cell--fill#{$blocss-dimensions-responsive-modifier}#{$name} {
+            @include blocss-layout-fill;
+        }
+    }
+}
+
+
+
+} // use-layout
