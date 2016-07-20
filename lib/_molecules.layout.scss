@@ -1,5 +1,5 @@
 @charset "UTF-8";
-/*! blocss-layout v0.0.0 | MIT License | github.com/Blocss */
+/*! blocss-layout v0.1.0 | MIT License | github.com/Blocss */
 
 /*----------------------------------------------------------------------------*\
     $LAYOUT
@@ -188,7 +188,7 @@ $blocss-dimensions-breakpoint-has-fill: () !default;
 
 
 /**
- * Modifier: Make a unit shrink wrap its content.
+ * Modifier: Make a cell shrink wrap its content.
  */
 .#{$blocss-layout-namespace}layout__cell--fit {
     @include blocss-layout-fit;
