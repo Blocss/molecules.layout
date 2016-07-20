@@ -42,6 +42,7 @@ $blocss-layout-gutter: $blocss-space !default;
     flex-flow: row wrap;
     padding: 0; /* [1] */
     margin-left: 0; /* [1] */
+    list-style: none; /* [1] */
 }
 
 
