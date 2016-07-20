@@ -1,4 +1,4 @@
-# Blocss Layout – v0.1.0
+# Blocss Layout – v0.1.1
 
 A [Blocss](https://github.com/Blocss/blocss/) component for a CSS layout system. Layout makes use of `flexbox` and
 `box-sizing` to provide features that float-based layouts cannot.
@@ -31,7 +31,11 @@ Read more about [Blocss](https://blocss.github.io/blocss).
 * `.layout--align-bottom`: Vertical align cells to bottom
 * `.layout--fit`: Vertical Allow cells to equal distribute width
 * `.layout--equalheight`: All cells match height of tallest cell in a row, requires direct child of `.layout__cell` to be a single element
-* `.layout--gutter`: Adds a gutter between all cells
+* `.layout--gutter`: Adds a default gutter between all cells
+* `.layout--gutter-tiny`: Adds a tiny gutter between all cells
+* `.layout--gutter-small`: Adds a small gutter between all cells
+* `.layout--gutter-large`: Adds a large gutter between all cells
+* `.layout--gutter-huge`: Adds a huge gutter between all cells
 * `.layout__cell`: Cell element, always needs to be direct child of `.layout`, defaults to be 100% wide.
 * `.layout__cell--center`: Center aligns this cell
 * `.layout__cell--fit`: Make a cell shrink wrap its content.
@@ -44,6 +48,10 @@ Read more about [Blocss](https://blocss.github.io/blocss).
 * `$blocss-dimensions-responsive-modifier` - Prefixes responsive classes, defaults to `$blocss-responsive-modifier`
 * `$blocss-use-layout` - Enables/disables the intire module, defaults to `true`
 * `$blocss-layout-gutter` - Defines the gutter width, defaults to `$blocss-space`
+* `$blocss-layout-gutter-tiny` - Defines the tiny gutter width, defaults to `$blocss-space-tiny`
+* `$blocss-layout-gutter-small` - Defines the small gutter width, defaults to `$blocss-space-small`
+* `$blocss-layout-gutter-large` - Defines the large gutter width, defaults to `$blocss-space-large`
+* `$blocss-layout-gutter-huge` - Defines the huge gutter width, defaults to `$blocss-space-huge`
 * `$blocss-dimensions-breakpoint-has-fit` - Defines the breakpoints where `.layout__cell--fit` can be applied to, defaults to `()`.
 * `$blocss-dimensions-breakpoint-has-fill` - Defines the breakpoints where `.layout__cell--fill` can be applied to, defaults to `()`.
 
