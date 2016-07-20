@@ -23,9 +23,6 @@ $blocss-layout-gutter: $blocss-space !default;
 
 
 
-/*  Layout Core
-\*----------------------------------------------------------------------------*/
-
 @if $blocss-use-layout == true {
 
 /*  Layout root
@@ -169,5 +166,7 @@ $blocss-layout-gutter: $blocss-space !default;
     flex: 1 1 0%; /* [1] */
     flex-basis: 0%; /* [2] */
 }
+
+
 
 } // use-layout
