@@ -88,7 +88,7 @@ $blocss-layout-gutter: $blocss-space !default;
  *    http://git.io/vllWx
  */
 .layout--fit {
-    & > .layout__cell {
+    > .layout__cell {
         flex: 1 1 0%; /* [1] */
     }
 }
@@ -96,10 +96,16 @@ $blocss-layout-gutter: $blocss-space !default;
 
 /**
  * Modifier: all cells match height of tallest cell in a row
+ * 1. The direct child of the flexbox must be a single element when you want
+ *    to use equalheight
  */
 .layout--equalheight {
-    & > .layout__cell {
+    > .layout__cell {
         display: flex;
+
+        > *:only-child {
+            width: 100%; /* [1] */
+        }
     }
 }
 
@@ -110,7 +116,7 @@ $blocss-layout-gutter: $blocss-space !default;
 .layout--gutter {
     @include rem(margin-left, -$blocss-layout-gutter);
 
-    & > .layout__cell {
+    > .layout__cell {
         @include rem(padding-left, $blocss-layout-gutter);
     }
 }
