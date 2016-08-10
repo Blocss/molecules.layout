@@ -46,7 +46,7 @@ Read more about [Blocss](https://blocss.github.io/blocss).
 
 * `$blocss-layout-namespace` - Prefixes classes with a namespace, defaults to `$blocss-namespace`
 * `$blocss-dimensions-responsive-modifier` - Prefixes responsive classes, defaults to `$blocss-responsive-modifier`
-* `$blocss-use-layout` - Enables/disables the intire module, defaults to `true`
+* `$blocss-use-layout` - Enables/disables the entire module, defaults to `true`
 * `$blocss-layout-gutter` - Defines the gutter width, defaults to `$blocss-space`
 * `$blocss-layout-gutter-tiny` - Defines the tiny gutter width, defaults to `$blocss-space-tiny`
 * `$blocss-layout-gutter-small` - Defines the small gutter width, defaults to `$blocss-space-small`
