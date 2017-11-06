@@ -1,4 +1,6 @@
-# Blocss Layout – v0.1.1
+# Blocss Layout – v0.1.1 - Deprecated
+
+**This module has been moved to: ([https://github.com/Blocss/blocss](https://github.com/Blocss/blocss))**
 
 A [Blocss](https://github.com/Blocss/blocss/) component for a CSS layout system. Layout makes use of `flexbox` and
 `box-sizing` to provide features that float-based layouts cannot.
